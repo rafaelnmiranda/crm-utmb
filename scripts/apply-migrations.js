@@ -151,7 +151,7 @@ async function main() {
     console.log('   Este script prepara as migrations, mas para executá-las você precisa:');
     console.log('   1. Via Dashboard: https://app.supabase.com/project/yytotgpwbnjpjyjkuiyn → SQL Editor');
     console.log('   2. Via CLI: supabase link --project-ref yytotgpwbnjpjyjkuiyn && supabase db push');
-    console.log('\n   Ou use o script apply-migrations-direct.js que executa via psql\n');
+    console.log('\n   Veja docs/APLICAR_MIGRATIONS.md para mais detalhes\n');
 
     // Ler e exibir o SQL para facilitar a cópia
     const sql1 = fs.readFileSync(migration1Path, 'utf8');

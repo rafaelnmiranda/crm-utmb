@@ -41,14 +41,23 @@ Abra [http://localhost:3000](http://localhost:3000) no navegador.
 utmb-crm/
 ├── app/              # Next.js App Router
 ├── components/       # Componentes React
+├── data/             # Arquivos de dados e referência
+├── docs/             # Documentação do projeto
 ├── lib/              # Utilitários e configurações
+├── scripts/          # Scripts de desenvolvimento
+│   └── sql/          # Scripts SQL de manutenção
 ├── types/            # TypeScript types
 └── supabase/         # Migrations e schemas
 ```
 
 ## Documentação
 
-Veja `INTEGRACOES.md` para detalhes sobre todas as integrações necessárias.
+Veja [`docs/INTEGRACOES.md`](docs/INTEGRACOES.md) para detalhes sobre todas as integrações necessárias.
+
+Outros documentos úteis:
+- [`docs/CRIAR_USUARIO_TESTE.md`](docs/CRIAR_USUARIO_TESTE.md) - Como criar usuário de teste
+- [`docs/APLICAR_MIGRATIONS.md`](docs/APLICAR_MIGRATIONS.md) - Como aplicar migrations
+- [`docs/SCHEMA.md`](docs/SCHEMA.md) - Schema do banco de dados
 
 
 
