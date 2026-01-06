@@ -16,7 +16,7 @@ type TaskRow = {
   deals?: {
     id: string
     title: string
-    organizations?: { id: string; name: string } | null
+    organizations?: { id: string; name: string } | { id: string; name: string }[] | null
   } | null
 }
 
