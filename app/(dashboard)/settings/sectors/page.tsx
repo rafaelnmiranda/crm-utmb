@@ -62,18 +62,20 @@ export default async function SectorsSettingsPage() {
 
         {/* Sectors by Category */}
         <div className="space-y-6">
-          {Object.entries(sectorsByCategory).map(([category, categorySectors]) => (
+          {Object.entries(sectorsByCategory).map(([category, categorySectors]) => {
+            const sectors = categorySectors as Sector[]
+            return (
             <div key={category} className="space-y-2">
               <h2 className="text-lg font-semibold text-foreground flex items-center gap-2">
                 <span className={`px-3 py-1 rounded text-sm ${categoryColors[category as SectorCategory]}`}>
                   {categoryLabels[category as SectorCategory]}
                 </span>
                 <span className="text-sm text-muted-foreground font-normal">
-                  ({categorySectors.length} {categorySectors.length === 1 ? 'setor' : 'setores'})
+                  ({sectors.length} {sectors.length === 1 ? 'setor' : 'setores'})
                 </span>
               </h2>
               <div className="space-y-2">
-                {categorySectors.map((sector: Sector) => (
+                {sectors.map((sector: Sector) => (
                   <div
                     key={sector.id}
                     className="flex items-center justify-between gap-4 p-3 bg-card border border-border rounded-lg hover:shadow-sm transition-shadow"
@@ -94,7 +96,8 @@ export default async function SectorsSettingsPage() {
                 ))}
               </div>
             </div>
-          ))}
+            )
+          })}
         </div>
 
         {(!sectors || sectors.length === 0) && (
