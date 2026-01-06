@@ -1,0 +1,56 @@
+import { createServerClient } from '@supabase/ssr'
+import { NextResponse } from 'next/server'
+import type { NextRequest } from 'next/server'
+
+export async function middleware(req: NextRequest) {
+  // Rotas públicas
+  if (req.nextUrl.pathname.startsWith('/login') || req.nextUrl.pathname === '/') {
+    return NextResponse.next()
+  }
+
+  // Rotas de API não precisam de autenticação no middleware
+  if (req.nextUrl.pathname.startsWith('/api')) {
+    return NextResponse.next()
+  }
+
+  // Verificar autenticação para rotas protegidas
+  let supabaseResponse = NextResponse.next({
+    request: req,
+  })
+
+  const supabase = createServerClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+    {
+      cookies: {
+        getAll() {
+          return req.cookies.getAll()
+        },
+        setAll(cookiesToSet) {
+          cookiesToSet.forEach(({ name, value, options }) => req.cookies.set(name, value))
+          supabaseResponse = NextResponse.next({
+            request: req,
+          })
+          cookiesToSet.forEach(({ name, value, options }) =>
+            supabaseResponse.cookies.set(name, value, options)
+          )
+        },
+      },
+    }
+  )
+
+  const {
+    data: { session },
+  } = await supabase.auth.getSession()
+
+  if (!session) {
+    return NextResponse.redirect(new URL('/login', req.url))
+  }
+
+  return supabaseResponse
+}
+
+export const config = {
+  matcher: ['/((?!api|_next/static|_next/image|favicon.ico).*)'],
+}
+

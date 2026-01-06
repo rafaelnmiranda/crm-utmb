@@ -1,0 +1,77 @@
+================================================================================
+RELATÓRIO DE MAPEAMENTO - Empresas e Setores
+================================================================================
+
+Total de empresas processadas: 220
+
+Total de empresas COM setores mapeados: 194
+
+Total de empresas SEM setores mapeados: 26
+
+
+Empresas SEM setores mapeados (26):
+  - ABSOLAR (setor no Excel: Fornecedores)
+  - Claro (setor no Excel: Telefonia)
+  - Comgás (setor no Excel: Fornecedores)
+  - Continental (setor no Excel: Tecnologia)
+  - Cosan (setor no Excel: Fornecedores)
+  - Decathlon (setor no Excel: Outros)
+  - Droga Raia (setor no Excel: Farmacêutica)
+  - Enel (setor no Excel: Fornecedores)
+  - Eurofarma - RETOMAR (setor no Excel: Farmacêutica)
+  - Galderma (setor no Excel: Farmacêutica)
+  - Globo ✅ (setor no Excel: Televisão)
+  - Go Outside ✅ (setor no Excel: Mídia)
+  - Grupo DPSP (Drogarias SP e Pacheco) (setor no Excel: Fornecedores)
+  - Meta (setor no Excel: Tecnologia)
+  - Oi (setor no Excel: Tecnologia)
+  - Rolex (setor no Excel: Jóias)
+  - Samsung ✅ (setor no Excel: Tecnologia)
+  - Sky (setor no Excel: Tecnologia)
+  - Strava (setor no Excel: Tecnologia)
+  - Tim (setor no Excel: Tecnologia)
+  - Uber (setor no Excel: Tecnologia)
+  - Vivo (setor no Excel: Tecnologia)
+  - https://www.linkedin.com/sales/company/1007141?_ntb=3lsxur%2FGTAOZn8KL2dzFzA%3D%3Diolab ✅ (setor no Excel: Farmacêutica)
+  - Águas de Paraty (setor no Excel: Fornecedores)
+  - Águas do Rio (setor no Excel: Fornecedores)
+  - ❌ Engie - INCETINADA (setor no Excel: Outros)
+
+
+Setores do Excel NÃO MAPEADOS (precisam de decisão):
+  - Farmacêutica
+  - Fornecedores
+  - Jóias
+  - Mídia
+  - Outros
+  - Tecnologia
+  - Telefonia
+  - Televisão
+
+================================================================================
+MAPEAMENTO APLICADO
+================================================================================
+Academia                            -> Coaching application
+Alimentação e Bebidas               -> Performance/Sports Drinks
+Alimentação e Bebidas, Vestuário    -> Performance/Sports Drinks, Technical sports Apparel
+Assessoria Esportiva                -> Coaching application
+Assessórios                         -> Eyewear
+Assessórios, Vestuário              -> Eyewear, Technical sports Apparel
+Automotivo                          -> Automaker (including electric cars)
+Aéreas e Transportes                -> Travel & accommodation services
+Cosméticos                          -> Personal care/cosmetics
+Equipamentos                        -> Sports retailers
+Farmacêutica                        -> [NÃO MAPEADO]
+Financeiro                          -> Financial services
+Fornecedores                        -> [NÃO MAPEADO]
+Jóias                               -> [NÃO MAPEADO]
+Mídia                               -> [NÃO MAPEADO]
+Outros                              -> [NÃO MAPEADO]
+Postos de combustíveis              -> Oil & Gas
+Seguros                             -> Insurance
+Suplementos                         -> Energy Bars
+Tecnologia                          -> [NÃO MAPEADO]
+Telefonia                           -> [NÃO MAPEADO]
+Televisão                           -> [NÃO MAPEADO]
+Vestuário                           -> Technical sports Apparel
+Água                                -> Reusable water bottles

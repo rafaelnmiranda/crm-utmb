@@ -1,0 +1,110 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 500" role="img" aria-label="Mapa EXPO base">
+  <defs>
+    <style>
+      .bg { fill: #f8fafc; }
+      .lane { fill: #e2e8f0; }
+      .label { font: 18px system-ui, -apple-system, Segoe UI, Roboto, sans-serif; fill: #334155; font-weight: 700; }
+      .hint { font: 14px system-ui, -apple-system, Segoe UI, Roboto, sans-serif; fill: #475569; }
+      .stand { fill: #f1f5f9; stroke: #cbd5e1; stroke-width: 2; }
+      .standText { font: 12px system-ui, -apple-system, Segoe UI, Roboto, sans-serif; fill: #64748b; font-weight: 700; }
+    </style>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1000" height="500" />
+  <rect class="lane" x="0" y="210" width="1000" height="80" />
+
+  <text class="label" x="20" y="40">EXPO (base)</text>
+  <text class="hint" x="20" y="65">Substitua este SVG pela arte final do mapa quando quiser. As áreas clicáveis usam coordenadas percentuais.</text>
+
+  <!-- A row -->
+  <text class="label" x="60" y="110">A</text>
+  <rect class="stand" x="60" y="100" width="60" height="50" />
+  <rect class="stand" x="130" y="100" width="60" height="50" />
+  <rect class="stand" x="200" y="100" width="60" height="50" />
+  <rect class="stand" x="270" y="100" width="60" height="50" />
+  <rect class="stand" x="340" y="100" width="60" height="50" />
+  <text class="standText" x="76" y="130">A01</text>
+  <text class="standText" x="146" y="130">A02</text>
+  <text class="standText" x="216" y="130">A03</text>
+  <text class="standText" x="286" y="130">A04</text>
+  <text class="standText" x="356" y="130">A05</text>
+
+  <!-- B row -->
+  <text class="label" x="80" y="270">B</text>
+  <rect class="stand" x="100" y="240" width="70" height="60" />
+  <rect class="stand" x="180" y="240" width="70" height="60" />
+  <rect class="stand" x="260" y="240" width="70" height="60" />
+  <text class="standText" x="118" y="275">B01</text>
+  <text class="standText" x="198" y="275">B02</text>
+  <text class="standText" x="278" y="275">B03</text>
+
+  <!-- C row -->
+  <text class="label" x="60" y="430">C</text>
+  <rect class="stand" x="70" y="360" width="60" height="60" />
+  <rect class="stand" x="140" y="360" width="60" height="60" />
+  <rect class="stand" x="210" y="360" width="60" height="60" />
+  <rect class="stand" x="280" y="360" width="60" height="60" />
+  <rect class="stand" x="350" y="360" width="60" height="60" />
+  <text class="standText" x="86" y="395">C01</text>
+  <text class="standText" x="156" y="395">C02</text>
+  <text class="standText" x="226" y="395">C03</text>
+  <text class="standText" x="296" y="395">C04</text>
+  <text class="standText" x="366" y="395">C05</text>
+
+  <!-- D row -->
+  <text class="label" x="560" y="110">D</text>
+  <g>
+    <rect class="stand" x="560" y="100" width="45" height="50" />
+    <rect class="stand" x="615" y="100" width="45" height="50" />
+    <rect class="stand" x="670" y="100" width="45" height="50" />
+    <rect class="stand" x="725" y="100" width="45" height="50" />
+    <rect class="stand" x="780" y="100" width="45" height="50" />
+    <rect class="stand" x="835" y="100" width="45" height="50" />
+    <rect class="stand" x="890" y="100" width="45" height="50" />
+    <rect class="stand" x="945" y="100" width="45" height="50" />
+    <text class="standText" x="568" y="130">D01</text>
+    <text class="standText" x="623" y="130">D02</text>
+    <text class="standText" x="678" y="130">D03</text>
+    <text class="standText" x="733" y="130">D04</text>
+    <text class="standText" x="788" y="130">D05</text>
+    <text class="standText" x="843" y="130">D06</text>
+    <text class="standText" x="898" y="130">D07</text>
+    <text class="standText" x="953" y="130">D08</text>
+  </g>
+
+  <!-- E (upper-right) -->
+  <text class="label" x="700" y="220">E</text>
+  <rect class="stand" x="700" y="200" width="50" height="50" />
+  <rect class="stand" x="760" y="200" width="50" height="50" />
+  <rect class="stand" x="820" y="200" width="50" height="50" />
+  <rect class="stand" x="880" y="200" width="50" height="50" />
+  <text class="standText" x="708" y="230">E06</text>
+  <text class="standText" x="768" y="230">E07</text>
+  <text class="standText" x="828" y="230">E08</text>
+  <text class="standText" x="888" y="230">E09</text>
+
+  <!-- F row -->
+  <text class="label" x="580" y="430">F</text>
+  <g>
+    <rect class="stand" x="580" y="360" width="45" height="60" />
+    <rect class="stand" x="635" y="360" width="45" height="60" />
+    <rect class="stand" x="690" y="360" width="45" height="60" />
+    <rect class="stand" x="745" y="360" width="45" height="60" />
+    <rect class="stand" x="800" y="360" width="45" height="60" />
+    <rect class="stand" x="855" y="360" width="45" height="60" />
+    <rect class="stand" x="910" y="360" width="45" height="60" />
+    <rect class="stand" x="965" y="360" width="45" height="60" />
+    <text class="standText" x="588" y="395">F01</text>
+    <text class="standText" x="643" y="395">F02</text>
+    <text class="standText" x="698" y="395">F03</text>
+    <text class="standText" x="753" y="395">F04</text>
+    <text class="standText" x="808" y="395">F05</text>
+    <text class="standText" x="863" y="395">F06</text>
+    <text class="standText" x="918" y="395">F07</text>
+    <text class="standText" x="973" y="395">F08</text>
+  </g>
+</svg>
+
+
+
+
