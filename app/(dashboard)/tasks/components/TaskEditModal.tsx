@@ -99,7 +99,15 @@ export default function TaskEditModal({ task, open, onOpenChange, onSuccess }: T
 
   if (!task) return null
 
-  const companyName = task.deals?.organizations?.name
+  // Extrair nome da organização, tratando diferentes estruturas possíveis
+  let companyName: string | undefined = undefined
+  if (task.deals?.organizations) {
+    if (Array.isArray(task.deals.organizations) && task.deals.organizations.length > 0) {
+      companyName = task.deals.organizations[0]?.name
+    } else if (typeof task.deals.organizations === 'object' && 'name' in task.deals.organizations) {
+      companyName = task.deals.organizations.name
+    }
+  }
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
