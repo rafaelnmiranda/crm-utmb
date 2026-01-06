@@ -3,7 +3,9 @@
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
-import { supabase } from '@/lib/supabase/client'
+import { getSupabaseClient } from '@/lib/supabase/client'
+
+export const dynamic = 'force-dynamic'
 
 export default function LoginPage() {
   const [email, setEmail] = useState('')
@@ -21,6 +23,7 @@ export default function LoginPage() {
     setResetSent(false)
 
     try {
+      const supabase = getSupabaseClient()
       const { data, error } = await supabase.auth.signInWithPassword({
         email,
         password,
@@ -60,6 +63,7 @@ export default function LoginPage() {
     setError(null)
 
     try {
+      const supabase = getSupabaseClient()
       const redirectTo = `${window.location.origin}/auth/reset-password`
       const { error } = await supabase.auth.resetPasswordForEmail(email, {
         redirectTo,

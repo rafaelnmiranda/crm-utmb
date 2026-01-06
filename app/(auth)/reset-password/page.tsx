@@ -2,7 +2,9 @@
 
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
-import { supabase } from '@/lib/supabase/client'
+import { getSupabaseClient } from '@/lib/supabase/client'
+
+export const dynamic = 'force-dynamic'
 
 export default function ResetPasswordPage() {
   const [password, setPassword] = useState('')
@@ -17,6 +19,7 @@ export default function ResetPasswordPage() {
     const hash = window.location.hash
     if (hash) {
       // O Supabase processa automaticamente o hash, mas podemos verificar se há sessão
+      const supabase = getSupabaseClient()
       supabase.auth.getSession().then(({ data: { session } }) => {
         if (!session) {
           setError('Link inválido ou expirado. Por favor, solicite um novo reset de senha.')
@@ -43,6 +46,7 @@ export default function ResetPasswordPage() {
     setLoading(true)
 
     try {
+      const supabase = getSupabaseClient()
       const { error } = await supabase.auth.updateUser({
         password: password,
       })
