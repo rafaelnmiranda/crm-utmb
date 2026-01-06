@@ -20,7 +20,7 @@ export default function ResetPasswordPage() {
     if (hash) {
       // O Supabase processa automaticamente o hash, mas podemos verificar se há sessão
       const supabase = getSupabaseClient()
-      supabase.auth.getSession().then(({ data: { session } }) => {
+      supabase.auth.getSession().then(({ data: { session } }: { data: { session: any } }) => {
         if (!session) {
           setError('Link inválido ou expirado. Por favor, solicite um novo reset de senha.')
         }
