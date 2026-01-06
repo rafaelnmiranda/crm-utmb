@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { useRouter, useParams } from 'next/navigation'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
@@ -46,12 +46,18 @@ export default function EditCounterpartPage() {
   const [addingTierLink, setAddingTierLink] = useState(false)
   const [removingTierLink, setRemovingTierLink] = useState<string | null>(null)
 
-  useEffect(() => {
-    fetchData()
-    fetchTiers()
-  }, [id])
+  const fetchTiers = useCallback(async () => {
+    try {
+      const response = await fetch('/api/sponsorship-tiers')
+      if (!response.ok) throw new Error('Erro ao carregar cotas')
+      const data = await response.json()
+      setTiers(data)
+    } catch (error) {
+      console.error('Error:', error)
+    }
+  }, [])
 
-  const fetchData = async () => {
+  const fetchData = useCallback(async () => {
     try {
       const [counterpartRes, linksRes] = await Promise.all([
         fetch(`/api/sponsorship-counterparts/${id}`),
@@ -82,18 +88,12 @@ export default function EditCounterpartPage() {
     } finally {
       setLoadingData(false)
     }
-  }
+  }, [id, router])
 
-  const fetchTiers = async () => {
-    try {
-      const response = await fetch('/api/sponsorship-tiers')
-      if (!response.ok) throw new Error('Erro ao carregar cotas')
-      const data = await response.json()
-      setTiers(data)
-    } catch (error) {
-      console.error('Error:', error)
-    }
-  }
+  useEffect(() => {
+    fetchData()
+    fetchTiers()
+  }, [fetchData, fetchTiers])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()

@@ -207,7 +207,7 @@ export default function EditPipelineStagePage() {
                   className="h-4 w-4 rounded border-gray-300"
                 />
                 <Label htmlFor="is_lost" className="cursor-pointer">
-                  Marcar como estágio de "Perdido"
+                  Marcar como estágio de &quot;Perdido&quot;
                 </Label>
               </div>
 

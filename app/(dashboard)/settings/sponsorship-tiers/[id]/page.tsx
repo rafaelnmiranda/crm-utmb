@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { useRouter, useParams } from 'next/navigation'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
@@ -38,36 +38,7 @@ export default function EditSponsorshipTierPage() {
     description: '',
   })
 
-  useEffect(() => {
-    // Carregar dados do tier
-    const fetchTier = async () => {
-      try {
-        const response = await fetch(`/api/sponsorship-tiers/${tierId}`)
-        if (!response.ok) {
-          throw new Error('Erro ao carregar cota')
-        }
-        const tier: SponsorshipTier = await response.json()
-        setFormData({
-          name: tier.name || '',
-          value_brl: tier.value_brl?.toString() || '',
-          description: tier.description || '',
-        })
-      } catch (error) {
-        console.error('Error:', error)
-        alert('Erro ao carregar cota. Tente novamente.')
-        router.push('/settings/sponsorship-tiers')
-      } finally {
-        setLoadingData(false)
-      }
-    }
-
-    if (tierId) {
-      fetchTier()
-      fetchCounterparts()
-    }
-  }, [tierId, router])
-
-  const fetchCounterparts = async () => {
+  const fetchCounterparts = useCallback(async () => {
     try {
       const response = await fetch(`/api/sponsorship-tiers/${tierId}/counterparts`)
       if (!response.ok) {
@@ -80,7 +51,35 @@ export default function EditSponsorshipTierPage() {
     } finally {
       setLoadingCounterparts(false)
     }
-  }
+  }, [tierId])
+
+  const fetchTier = useCallback(async () => {
+    try {
+      const response = await fetch(`/api/sponsorship-tiers/${tierId}`)
+      if (!response.ok) {
+        throw new Error('Erro ao carregar cota')
+      }
+      const tier: SponsorshipTier = await response.json()
+      setFormData({
+        name: tier.name || '',
+        value_brl: tier.value_brl?.toString() || '',
+        description: tier.description || '',
+      })
+    } catch (error) {
+      console.error('Error:', error)
+      alert('Erro ao carregar cota. Tente novamente.')
+      router.push('/settings/sponsorship-tiers')
+    } finally {
+      setLoadingData(false)
+    }
+  }, [tierId, router])
+
+  useEffect(() => {
+    if (tierId) {
+      fetchTier()
+      fetchCounterparts()
+    }
+  }, [tierId, fetchTier, fetchCounterparts])
 
   const handleSaveCounterpart = async (counterpart: TierCounterpartItem) => {
     try {

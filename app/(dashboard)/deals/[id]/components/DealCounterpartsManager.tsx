@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
@@ -35,13 +35,7 @@ export default function DealCounterpartsManager({ dealId }: DealCounterpartsMana
   const [showDeleteAllDialog, setShowDeleteAllDialog] = useState(false)
   const [deletingAll, setDeletingAll] = useState(false)
 
-  useEffect(() => {
-    fetchCounterparts()
-    fetchTiers()
-    fetchAvailableCounterparts()
-  }, [dealId])
-
-  const fetchTiers = async () => {
+  const fetchTiers = useCallback(async () => {
     try {
       const response = await fetch('/api/sponsorship-tiers')
       if (!response.ok) throw new Error('Erro ao carregar cotas')
@@ -50,9 +44,9 @@ export default function DealCounterpartsManager({ dealId }: DealCounterpartsMana
     } catch (error) {
       console.error('Error:', error)
     }
-  }
+  }, [])
 
-  const fetchAvailableCounterparts = async () => {
+  const fetchAvailableCounterparts = useCallback(async () => {
     try {
       const response = await fetch('/api/sponsorship-counterparts')
       if (!response.ok) throw new Error('Erro ao carregar entregáveis disponíveis')
@@ -61,9 +55,9 @@ export default function DealCounterpartsManager({ dealId }: DealCounterpartsMana
     } catch (error) {
       console.error('Error:', error)
     }
-  }
+  }, [])
 
-  const fetchCounterparts = async () => {
+  const fetchCounterparts = useCallback(async () => {
     try {
       const response = await fetch(`/api/deals/${dealId}/counterparts`)
       if (!response.ok) throw new Error('Erro ao carregar entregáveis')
@@ -74,7 +68,13 @@ export default function DealCounterpartsManager({ dealId }: DealCounterpartsMana
     } finally {
       setLoading(false)
     }
-  }
+  }, [dealId])
+
+  useEffect(() => {
+    fetchCounterparts()
+    fetchTiers()
+    fetchAvailableCounterparts()
+  }, [dealId, fetchCounterparts, fetchTiers, fetchAvailableCounterparts])
 
   const handleSaveCounterpart = async (counterpart: DealCounterpart) => {
     try {

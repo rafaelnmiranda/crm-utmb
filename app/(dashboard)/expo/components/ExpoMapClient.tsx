@@ -589,7 +589,7 @@ export default function ExpoMapClient({
                 </Button>
               </div>
               <p className="text-xs text-muted-foreground">
-                "Adicionar" adiciona este stand ao deal (pode ter múltiplos stands). "Substituir" remove o deal atual do stand (se houver) e atribui o novo.
+                &quot;Adicionar&quot; adiciona este stand ao deal (pode ter múltiplos stands). &quot;Substituir&quot; remove o deal atual do stand (se houver) e atribui o novo.
               </p>
             </div>
           </div>
