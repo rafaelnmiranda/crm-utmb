@@ -14,7 +14,7 @@ type TaskRow = {
   deals?: {
     id: string
     title: string
-    organizations?: { id: string; name: string } | null
+    organizations?: { id: string; name: string } | { id: string; name: string }[] | null
   } | null
 }
 
@@ -36,10 +36,10 @@ export default function TaskCard({
   // Extrair nome da organização, tratando diferentes estruturas possíveis
   let orgName: string | undefined = undefined
   if (task.deals?.organizations) {
-    if (typeof task.deals.organizations === 'object' && 'name' in task.deals.organizations) {
-      orgName = task.deals.organizations.name
-    } else if (Array.isArray(task.deals.organizations) && task.deals.organizations.length > 0) {
+    if (Array.isArray(task.deals.organizations) && task.deals.organizations.length > 0) {
       orgName = task.deals.organizations[0]?.name
+    } else if (typeof task.deals.organizations === 'object' && 'name' in task.deals.organizations) {
+      orgName = task.deals.organizations.name
     }
   }
 
